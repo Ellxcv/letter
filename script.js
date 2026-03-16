@@ -1,9 +1,11 @@
 ﻿const revealButton = document.getElementById("revealButton");
 const paperFlip = document.getElementById("paperFlip");
+const paperBack = document.querySelector(".paper-back");
 const messageSection = document.getElementById("messageSection");
 const btnYes = document.getElementById("btnYes");
 const btnNo = document.getElementById("btnNo");
 const responseMsg = document.getElementById("responseMsg");
+const responseButtons = document.querySelector(".response-buttons");
 
 const emailJsConfig = {
   publicKey: "4XT0_9CM71QFSagKI",
@@ -52,14 +54,31 @@ async function sendAnswerEmail(answer) {
   }
 }
 
+function updateResponseButtonsVisibility() {
+  if (!paperBack || !responseButtons) {
+    return;
+  }
+
+  const threshold = 12;
+  const isAtBottom =
+    paperBack.scrollTop + paperBack.clientHeight >=
+    paperBack.scrollHeight - threshold;
+
+  responseButtons.classList.toggle("is-visible", isAtBottom);
+}
+
+if (paperBack && responseButtons) {
+  paperBack.addEventListener("scroll", updateResponseButtonsVisibility);
+}
+
 if (revealButton && paperFlip && messageSection) {
   revealButton.addEventListener("click", () => {
     revealButton.disabled = true;
     revealButton.textContent = "Membalik kertas...";
 
-    // Delay kecil supaya state tombol ter-update sebelum animasi berjalan.
     requestAnimationFrame(() => {
       paperFlip.classList.add("is-flipped");
+      updateResponseButtonsVisibility();
     });
   });
 }
@@ -76,7 +95,6 @@ if (btnYes && btnNo && responseMsg) {
       responseMsg.textContent =
         "Jawabanmu diterima, tapi email gagal terkirim. Coba lagi nanti.";
     }
-
   });
 
   btnNo.addEventListener("click", async () => {
@@ -90,11 +108,14 @@ if (btnYes && btnNo && responseMsg) {
       responseMsg.textContent =
         "Jawabanmu diterima, tapi email gagal terkirim. Coba lagi nanti.";
     }
-
   });
 
   btnNo.addEventListener("mouseenter", () => {
-    if (btnNo.disabled) {
+    if (
+      btnNo.disabled ||
+      !responseButtons ||
+      !responseButtons.classList.contains("is-visible")
+    ) {
       return;
     }
 

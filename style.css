@@ -137,7 +137,10 @@ body {
   inset: 0;
   backface-visibility: hidden;
   overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -160,6 +163,7 @@ body {
   justify-content: flex-start;
   pointer-events: none;
   padding-right: 0.35rem;
+  padding-bottom: 6rem;
 }
 
 .paper-flip.is-flipped .paper-front {
@@ -265,9 +269,22 @@ body {
 }
 
 .response-buttons {
-  display: flex;
+  display: none;
   gap: 1rem;
   flex-wrap: wrap;
+  position: sticky;
+  bottom: 0;
+  z-index: 4;
+  padding: 0.75rem 0 0.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(245, 240, 232, 0.98) 65%,
+    rgba(245, 240, 232, 0)
+  );
+}
+
+.response-buttons.is-visible {
+  display: flex;
 }
 
 .btn-yes {
@@ -400,4 +417,13 @@ body {
   }
 
   .paper-flip { min-height: 0; }
+
+  .question-text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .response-buttons {
+    gap: 0.75rem;
+  }
 }
