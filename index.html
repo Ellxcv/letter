@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untuk Kamu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="envelope-wrapper">
+    <p class="from-label">Dari seseorang yang sudah lama menyimpan ini...</p>
+
+    <div class="letter-paper">
+      <div class="fold-line fold-line-1"></div>
+      <div class="fold-line fold-line-2"></div>
+
+      <div class="margin-line"></div>
+
+      <div class="postmark">
+        UNTUK<br>KAMU<br>-- ♡ --
+      </div>
+
+      <div class="letter-content">
+        <div id="paperFlip" class="paper-flip">
+          <section class="paper-side paper-front">
+            <p class="letter-date">Senin, 16 Maret 2026</p>
+
+            <h1 class="letter-salutation">Hai Kamu,</h1>
+
+            <p class="letter-body">
+              Aku sudah lama ingin mengatakan sesuatu, tapi setiap kali aku mencoba,
+              kata-kata itu selalu kabur entah ke mana. Maka dari itu, aku tulis saja di sini,
+              karena kertas tidak akan lari seperti keberanianku.
+            </p>
+
+            <button id="revealButton" type="button" class="reveal-btn">
+              Buka Suratnya
+            </button>
+
+            <div class="letter-signature">
+              <p class="signature-closing">Dengan sepenuh hati,</p>
+              <p class="signature-name">- Aku</p>
+            </div>
+          </section>
+
+          <section class="paper-side paper-back">
+            <article id="messageSection" class="message-section" aria-live="polite">
+              <p class="confession-text">Hiiii, Sarahhhh...</p>
+
+              <p class="question-text">
+                Pertama-tama, aku nulis ini karena kalau ngomong langsung, aku takut kejadian lagi kayak kemarin yang terlalu to the point sampai kelihatan kayak bercanda dan nggak romantis sama sekali. Padahal, apa yang mau aku sampein ini jauh dari kata bercanda.
+              </p>
+
+              <p class="question-text">
+                Jujur, sejak Januari atau Februari lalu, aku mulai ngerasa sangat amat "nempel" sama kamu. Kamu datang itu pelan-pelan ngisi bagian hidupku yang tadinya terasa hampa. Entah itu pas kita lagi bercanda, lagi tengkar, lagi saling cerita, atau bahkan pas kita lagi ngga ngapa-ngapain pun, aku selalu merasa nyaman.
+              </p>
+
+              <p class="question-text">
+                Satu hal yang paling aku syukuri adalah aku nggak perlu lagi pasang "topeng" di depan kamu. Aku bisa jadi diriku sendiri, meskipun sebelumnya aku sering nahan diri karena ngga enak sama kamu. Tapi sekarang, bareng kamu, aku merasa aman.
+              </p>
+
+              <p class="question-text">
+                Lewat surat ini, aku mau bilang kalau aku sayang banget sama kamu. Dan aku mau hubungan kita lebih serius dari sekadar ini.
+              </p>
+
+              <p class="question-text">
+                Aku pengen jadi orang pertama yang kamu cari saat kamu bahagia, dan orang yang paling bisa kamu andalin saat keadaan lagi sulit. Aku juga ngga mau kamu selalu mendam segala hal sendirian lagi. Obrolin aja ke aku kalau ada yang bikin kamu pusing atau overthinking, aku bakal selalu ada buat dengerin.
+              </p>
+
+              <p class="question-text">
+                So, last question... kamu mau ngga jadi pacarku?
+              </p>
+
+              <p class="question-text">
+                Apa pun jawaban kamu, aku bakal tetap menghargai itu. Tapi besar harapanku, aku bisa terus nemenin kamu di hari-hari ke depan.
+              </p>
+
+              <div class="response-buttons">
+                <button type="button" class="btn-yes" id="btnYes">Ya, mau</button>
+                <button type="button" class="btn-no" id="btnNo">Belum bisa</button>
+              </div>
+
+              <p class="response-msg" id="responseMsg"></p>
+            </article>
+          </section>
+        </div>
+      </div>
+
+      <div class="wax-seal">
+        <svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="21" cy="21" r="20" fill="none" stroke="rgba(80,60,40,0.2)" stroke-width="1.5"/>
+          <circle cx="21" cy="21" r="14" fill="none" stroke="rgba(80,60,40,0.15)" stroke-width="1"/>
+          <text x="21" y="25" text-anchor="middle" font-size="12" font-family="Georgia, serif" fill="rgba(80,60,40,0.2)">♡</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
