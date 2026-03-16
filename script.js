@@ -1,7 +1,5 @@
 ﻿const revealButton = document.getElementById("revealButton");
 const paperFlip = document.getElementById("paperFlip");
-const paperFront = document.querySelector(".paper-front");
-const paperBack = document.querySelector(".paper-back");
 const messageSection = document.getElementById("messageSection");
 const btnYes = document.getElementById("btnYes");
 const btnNo = document.getElementById("btnNo");
@@ -26,20 +24,6 @@ if (
   });
   emailJsReady = true;
 }
-
-function syncPaperHeight() {
-  if (!paperFlip || !paperFront || !paperBack) {
-    return;
-  }
-
-  const frontHeight = paperFront.scrollHeight;
-  const backHeight = paperBack.scrollHeight;
-  paperFlip.style.height = `${Math.max(frontHeight, backHeight)}px`;
-}
-
-syncPaperHeight();
-window.addEventListener("load", syncPaperHeight);
-window.addEventListener("resize", syncPaperHeight);
 
 async function sendAnswerEmail(answer) {
   if (!emailJsReady) {
@@ -93,7 +77,6 @@ if (btnYes && btnNo && responseMsg) {
         "Jawabanmu diterima, tapi email gagal terkirim. Coba lagi nanti.";
     }
 
-    syncPaperHeight();
   });
 
   btnNo.addEventListener("click", async () => {
@@ -108,7 +91,6 @@ if (btnYes && btnNo && responseMsg) {
         "Jawabanmu diterima, tapi email gagal terkirim. Coba lagi nanti.";
     }
 
-    syncPaperHeight();
   });
 
   btnNo.addEventListener("mouseenter", () => {

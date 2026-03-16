@@ -20,9 +20,12 @@ body {
   background-image:
     radial-gradient(ellipse at 20% 50%, #3a2e28 0%, transparent 60%),
     radial-gradient(ellipse at 80% 20%, #1a1210 0%, transparent 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 2rem 1rem;
   font-family: 'IM Fell English', Georgia, serif;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .envelope-wrapper {
@@ -30,6 +33,7 @@ body {
   width: 100%;
   max-width: 560px;
   margin: 0 auto;
+  height: calc(100vh - 4rem);
 }
 
 .from-label {
@@ -48,6 +52,7 @@ body {
   background-color: var(--paper);
   border-radius: 2px;
   padding: 3.5rem 3.5rem 4rem;
+  height: 100%;
   box-shadow:
     0 2px 0 var(--paper-crease),
     0 4px 12px rgba(0,0,0,0.35),
@@ -111,11 +116,14 @@ body {
   position: relative;
   z-index: 2;
   perspective: 1400px;
+  height: 100%;
+  min-height: 0;
 }
 
 .paper-flip {
   position: relative;
-  min-height: 520px;
+  height: 100%;
+  min-height: 0;
   transform-style: preserve-3d;
   transition: transform 1s cubic-bezier(0.2, 0.7, 0.15, 1);
 }
@@ -130,14 +138,19 @@ body {
   backface-visibility: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.paper-side::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .paper-front {
   display: flex;
   flex-direction: column;
   pointer-events: auto;
-  overflow: hidden;
 }
 
 .paper-back {
@@ -217,6 +230,7 @@ body {
 
 .message-section {
   width: 100%;
+  min-height: 100%;
   padding-top: 0.5rem;
   animation: fadeInUp 0.6s ease forwards;
 }
@@ -369,6 +383,14 @@ body {
 }
 
 @media (max-width: 640px) {
+  body {
+    padding: 1rem;
+  }
+
+  .envelope-wrapper {
+    height: calc(100vh - 2rem);
+  }
+
   .letter-paper {
     padding: 2.25rem 1.5rem 3.5rem;
   }
@@ -377,7 +399,5 @@ body {
     left: 36px;
   }
 
-  .paper-flip {
-    min-height: 600px;
-  }
+  .paper-flip { min-height: 0; }
 }
