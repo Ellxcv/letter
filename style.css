@@ -269,13 +269,18 @@ body {
 }
 
 .response-buttons {
-  display: none;
+  display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   position: sticky;
   bottom: 0;
   z-index: 4;
   padding: 0.75rem 0 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
   background: linear-gradient(
     to top,
     rgba(245, 240, 232, 0.98) 65%,
@@ -284,7 +289,10 @@ body {
 }
 
 .response-buttons.is-visible {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .btn-yes {

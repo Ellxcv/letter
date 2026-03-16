@@ -6,6 +6,7 @@ const btnYes = document.getElementById("btnYes");
 const btnNo = document.getElementById("btnNo");
 const responseMsg = document.getElementById("responseMsg");
 const responseButtons = document.querySelector(".response-buttons");
+let isResponseVisible = false;
 
 const emailJsConfig = {
   publicKey: "4XT0_9CM71QFSagKI",
@@ -59,12 +60,18 @@ function updateResponseButtonsVisibility() {
     return;
   }
 
-  const threshold = 12;
-  const isAtBottom =
-    paperBack.scrollTop + paperBack.clientHeight >=
-    paperBack.scrollHeight - threshold;
+  const distanceToBottom =
+    paperBack.scrollHeight - (paperBack.scrollTop + paperBack.clientHeight);
+  const showThreshold = 24;
+  const hideThreshold = 96;
 
-  responseButtons.classList.toggle("is-visible", isAtBottom);
+  if (!isResponseVisible && distanceToBottom <= showThreshold) {
+    isResponseVisible = true;
+    responseButtons.classList.add("is-visible");
+  } else if (isResponseVisible && distanceToBottom > hideThreshold) {
+    isResponseVisible = false;
+    responseButtons.classList.remove("is-visible");
+  }
 }
 
 if (paperBack && responseButtons) {
