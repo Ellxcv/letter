@@ -363,6 +363,82 @@ body {
   line-height: 1;
 }
 
+/* ── Additional pages ─────────────────────────── */
+
+.paper-page3,
+.paper-page4 {
+  transform: rotateY(180deg); /* match paper-back orientation */
+  display: none;
+  flex-direction: column;
+  pointer-events: none;
+  padding-right: 0.35rem;
+  padding-bottom: 6rem;
+}
+
+.paper-page3.is-active,
+.paper-page4.is-active {
+  display: flex;
+  pointer-events: auto;
+}
+
+/* Override: when on page3/page4, hide back face of paper-back */
+.paper-flip.show-page3 .paper-back,
+.paper-flip.show-page4 .paper-back,
+.paper-flip.show-page4 .paper-page3 {
+  pointer-events: none;
+}
+
+.paper-flip.show-page3 .paper-page3,
+.paper-flip.show-page4 .paper-page4 {
+  pointer-events: auto;
+}
+
+.page-label {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--ink-light);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.6rem;
+  opacity: 0.7;
+}
+
+.page-nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-next-page,
+.btn-prev-page {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+  background: transparent;
+  border: 1px solid var(--paper-crease);
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-next-page:hover,
+.btn-prev-page:hover {
+  color: var(--ink);
+  border-color: var(--ink-light);
+  transform: translateX(2px);
+}
+
+.btn-prev-page:hover {
+  transform: translateX(-2px);
+}
+
+.response-buttons-final {
+  margin-top: 1.2rem;
+}
+
 .wax-seal {
   position: absolute;
   bottom: 24px;
